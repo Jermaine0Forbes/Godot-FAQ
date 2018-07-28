@@ -4,6 +4,9 @@
 
 ### Best way to add items in ItemList
 
+**reference**
+- [godotengine](https://godotengine.org/qa/24147/best-way-to-add-items-in-itemlist)
+
 ```python
 extends Node
 
