@@ -1,5 +1,93 @@
 # Logs 
 
+
+## 8/4/18
+
+### What I've been working on 
+
+```python
+
+extends Control
+
+onready var item_slots = $items
+onready var cir_btn = $circle
+onready var ico_btn = $icon
+var circ_path 
+var icon_path
+var items = {}
+
+
+func _ready():
+	set_items()
+#	print(items)
+	pass
+
+#func _process(delta):
+#	# Called every frame. Delta is time since last frame.
+#	# Update game logic here.
+#	pass
+
+func get_next_empty_slot():
+	var slot
+	for i in items.keys():
+		if items[i][0] == null or items[i][0] == "" :
+			slot = i
+			print("slot: "+slot)
+			break
+	
+	return slot
+
+func set_items():
+	for i in item_slots.get_children():
+		var name = i.get_name()
+		var texture = i.get_node("item").get_texture() 
+		var item = texture.load_path if texture !=null else ""
+		var count = i.get_node("count").get_text()
+		
+		items[name] = [item,count]
+		
+	
+
+func add_item(item):
+	var num 
+	var slot
+	var text
+	var next_slot
+	for key in items.keys():
+		slot = item_slots.get_node(key)
+		if items[key][0] == item:
+			if not items[key][1]:
+				num = 0
+			else:
+				num = items[key][1]
+#			get_node(key).get_node("count").set_text(num+1)
+			text = str(num+1)
+			slot.get_node("count").set_text(text)
+			items[key][1] = int(text)
+		else :
+			next_slot = get_next_empty_slot()
+			print(next_slot)
+			var t = load(item) 
+			item_slots.get_node(next_slot).get_node("item").set_texture(t)
+			set_items()
+	
+	pass
+
+
+func _on_circle_pressed():
+	circ_path = cir_btn.get_normal_texture().load_path
+	add_item(circ_path)
+	pass # replace with function body
+
+
+func _on_icon_pressed():
+	icon_path = ico_btn.get_normal_texture().load_path
+	add_item(icon_path)
+	pass # replace with function body
+
+
+```
+
 ## 7/28/18
 
 ### Best way to add items in ItemList
