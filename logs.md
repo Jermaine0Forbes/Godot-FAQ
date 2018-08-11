@@ -1,5 +1,109 @@
 # Logs 
 
+## 8/11/18
+
+```python
+extends Node
+
+# class member variables go here, for example:
+# var a = 2
+# var b = "textvar"
+onready var timer = get_node("Timer")
+onready var label = get_node("Label")
+onready var app = preload("res://objects/apple.tscn")
+onready var sound = get_node("sound")
+onready var prize = get_node("prize")
+onready var spawn1 = get_node("spawn_1")
+onready var spawn2 = get_node("spawn_2")
+onready var spawn3 = get_node("spawn_3")
+var spawns 
+signal item_collect
+var screensize
+var apple
+#onready var menu = get_node("menu3")
+#var menu_open = false
+
+func _ready():
+	timer.set_wait_time(30)
+	timer.set_one_shot(true)
+	timer.connect("timeout",self, "on_timeout")
+	timer.start()
+	apple = app.instance()
+	apple.connect("apple_contact", self, "_contact_sound")
+	prize.connect("victory", self , "on_victory")
+	sound.get_node("myrrh").connect("finished", self,"change_scene")
+	screensize = get_viewport().get_visible_rect().size
+	spawns = {1:spawn1, 2:spawn2, 3:spawn3}
+	spawn_items(8)
+
+	#menu.hide()
+	
+	# Initialization here
+	pass
+
+#func _process(delta):
+#	# Called every frame. Delta is time since last frame.
+#	# Update game logic here.
+#
+#
+##	is_open()
+#
+#
+#	pass
+
+func spawn_items(num):
+	for i in range(num):
+		var a = app.instance()
+		var x = randi()%3+1
+		print("spawn"+str(x))
+		var spawn = spawns[x]
+		var size = spawn.get_global_position()
+		spawn.add_child(a)
+#		a.set_position(Vector2(rand_range(10, size.x-10),rand_range(10, size.y-10)) )
+#		a.set_position(size)
+#		a.setPos(get_global_pos()+Vector2(randf()*6-3,randf()*6-3) )
+		a.connect("apple_contact", self, "_contact_sound")
+		
+
+func change_scene():
+	get_tree().change_scene("res://World2.tscn")
+
+func on_victory():
+	sound.get_node("myrrh").play()
+	
+
+func _contact_sound():
+#	print(apple.get_node("Sprite").get_texture().load_path)
+	emit_signal("item_collect", apple.get_node("Sprite").get_texture().load_path)
+	sound.get_node("item").play()
+	
+
+func update_time():
+	var x = int(timer.time_left)
+	if x > 0 :
+		var text =  "0:0"+str(x) if x < 10 else "0:"+str(x)
+		label.set_text(text)
+	
+
+func on_timeout():
+	print("timer has stopped")
+	
+
+#func is_open():
+#	if Input.is_action_just_pressed("ui_accept") and menu_open == false:
+#		menu.show()
+#		print("im calling you")
+#		menu_open = true
+#		get_tree().paused = true
+#	elif Input.is_action_just_pressed("ui_accept") and menu_open == true:
+#		menu.hide()
+#		menu_open = false
+#		get_tree().paused = false
+
+
+```
+
+
 ## 8/5/18
 
 ### Update 
