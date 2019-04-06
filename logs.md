@@ -1,5 +1,49 @@
 # Logs
 
+## 4/6/19
+
+### Moving kinematic body
+
+```python
+extends KinematicBody2D
+
+
+export var speed = 400
+var vel = Vector2()
+var get_pos = Vector2()
+var extents = Vector2()
+var screensize = Vector2()
+
+
+func _ready():
+	# Called when the node is added to the scene for the first time.
+	# Initialization here
+	extents = $Sprite.get_texture().get_size()/4;
+	screensize = get_viewport_rect().size
+
+	pass
+
+func _process(delta):
+	shorthand()
+	var input = Vector2(0,0)
+	input.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
+	input.y = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
+	vel = input.normalized() * speed;
+	var pos = get_pos + vel * delta
+	pos.x = clamp(pos.x , 0, screensize.x )
+	pos.y = clamp(pos.y, 0, screensize.y )
+	set_pos(pos)
+	pass
+
+
+func shorthand():
+	get_pos = get_position()
+
+func set_pos(val):
+	set_position(val)
+```
+
+
 ## 4/4/19
 
 

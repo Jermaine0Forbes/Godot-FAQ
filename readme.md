@@ -12,7 +12,7 @@ How to add an item in a grid container
 
 How to create enemy AI
 
-How to transition to another scene
+[How to transition to another scene][trans-scene]
 
 [how to print something to console][print]
 
@@ -22,11 +22,30 @@ How to transition to another scene
 
 [how to get a size of a texture/sprite][size-texture]
 
+[trans-scene]:#how-to-transition-to-another-scene
 [size-texture]:#how-to-get-a-size-of-a-texture-sprite
 [get-pos]:#how-to-get-a-position-of-a-node
 [get-screen]:#how-to-get-screen-size
 [print]:#how-to-print-something-to-console
 [home]:#godot-reference
+
+
+### How to transition to another scene
+
+<details>
+<summary>
+View Content
+</summary>
+
+```python
+get_tree().change_scene("res://World2.tscn")
+```
+
+</details>
+
+[go back :house:][home]
+
+
 
 ### how to get a size of a texture/sprite
 
