@@ -18,7 +18,7 @@ var screensize = Vector2()
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
-	extents = $Sprite.get_texture().get_size()/4;
+	extents = $Sprite.get_texture().get_size()/2;
 	screensize = get_viewport_rect().size
 
 	pass
