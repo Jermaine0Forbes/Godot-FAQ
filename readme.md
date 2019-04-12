@@ -12,6 +12,10 @@ How to add an item in a grid container
 
 How to create enemy AI
 
+[how to animate a node][ani-node]
+
+[how to turn off the collision of a node/object][coll-off]
+
 [How to clear/delete a node from a scene][clear_node]
 
 [How to transition to another scene][trans-scene]
@@ -24,6 +28,9 @@ How to create enemy AI
 
 [how to get a size of a texture/sprite][size-texture]
 
+
+[ani-node]:#how-to-animate-a-node
+[coll-off]:#how-to-turn-off-the-collision-of-a-node
 [clear-node]:#how-to-clear-a-node-from-a-scene
 [trans-scene]:#how-to-transition-to-another-scene
 [size-texture]:#how-to-get-a-size-of-a-texture-sprite
@@ -31,6 +38,63 @@ How to create enemy AI
 [get-screen]:#how-to-get-screen-size
 [print]:#how-to-print-something-to-console
 [home]:#godot-reference
+
+
+### how to animate a node
+
+<details>
+<summary>
+View Content
+</summary>
+
+**reference**
+- [Tween](https://docs.godotengine.org/en/3.0/classes/class_tween.html#class-tween-interpolate-property)
+
+```python
+$Tween.interpolate_property($Sprite,"modulate", Color(1,1,1,1), Color(1,1,1,0),0.3, Tween.TRANS_QUAD, Tween.EASE_OUT )
+```
+
+</details>
+
+[go back :house:][home]
+
+
+### how to turn off a collision of a node
+
+<details>
+<summary>
+View Content
+</summary>
+
+**reference**
+- [collisionobject2d](https://docs.godotengine.org/en/3.0/classes/class_collisionobject2d.html#class-collisionobject2d-shape-owner-set-disabled)
+
+#### Method 1
+```python
+# when the potion collides with a body named isaiah
+# shape_owner_clear_shapes will clear all the shapes as long as you have the owner id
+# which will usually be 0
+func _on_potion_body_entered(body):
+	if body.get("name") == "isaiah":
+		shape_owner_clear_shapes(0)
+	pass
+```
+
+#### Method 2
+
+```python
+# when the potion collides with a body named isaiah
+# shape_owner_set_disabled will disable it as long as you have the boolean set to true
+# and the owner id of collision shape which will be 0
+func _on_potion_body_entered(body):
+	if body.get("name") == "isaiah":
+		shape_owner_set_disabled(0,true)
+	pass
+```
+
+</details>
+
+[go back :house:][home]
 
 
 ### how to clear a node from a scene

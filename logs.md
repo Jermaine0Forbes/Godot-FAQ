@@ -1,5 +1,18 @@
 # Logs
 
+## 4/11/19
+
+```python
+$Tween.interpolate_property($Sprite,"modulate", Color(1,1,1,1), Color(1,1,1,0),0.3, Tween.TRANS_QUAD, Tween.EASE_OUT )
+```
+
+## 4/10/19
+
+- shape_owner_set_disabled()
+- Tween.interpolate_property()
+- $Person.set_process(false)
+
+
 ## 4/6/19
 
 ### Moving kinematic body
