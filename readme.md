@@ -14,7 +14,7 @@ How to create enemy AI
 
 [tween transition types][trans-type]
 
-[how to animate a node][ani-node]
+[how to use the tween animation][ani-node]
 
 [how to turn off the collision of a node/object][coll-off]
 
@@ -58,16 +58,23 @@ Transition Type | Value
 -|-
 TRANS_LINEAR | 0
 TRANS_SINE | 1
+TRANS_QUINT | 2
+TRANS_QUART | 3
+TRANS_QUAD | 4
+TRANS_EXPO | 5
+TRANS_ELASTIC | 6
+TRANS_CUBIC | 7
+TRANS_CIRC | 8
+TRANS_BOUNCE | 9
+TRANS_BACK | 10
 
-```python
 
-```
 
 </details>
 
 [go back :house:][home]
 
-### how to animate a node
+### how to use the tween animation
 
 <details>
 <summary>
@@ -209,7 +216,7 @@ View Content
 
 
 ```python
-var sprite_size = get_texture().get_size()
+var screensize = get_viewport_rect().size
 ```
 
 </details>
