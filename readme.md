@@ -12,11 +12,13 @@ How to add an item in a grid container
 
 How to create enemy AI
 
+[tween transition types][trans-type]
+
 [how to animate a node][ani-node]
 
 [how to turn off the collision of a node/object][coll-off]
 
-[How to clear/delete a node from a scene][clear_node]
+[How to clear/delete a node from a scene][clear-node]
 
 [How to transition to another scene][trans-scene]
 
@@ -29,6 +31,7 @@ How to create enemy AI
 [how to get a size of a texture/sprite][size-texture]
 
 
+[trans-type]:#tween-transition-type
 [ani-node]:#how-to-animate-a-node
 [coll-off]:#how-to-turn-off-the-collision-of-a-node
 [clear-node]:#how-to-clear-a-node-from-a-scene
@@ -40,6 +43,30 @@ How to create enemy AI
 [home]:#godot-reference
 
 
+
+### tween transition type
+
+<details>
+<summary>
+View Content
+</summary>
+
+**reference**
+- [tween class](https://docs.godotengine.org/en/3.0/classes/class_tween.html)
+
+Transition Type | Value
+-|-
+TRANS_LINEAR | 0
+TRANS_SINE | 1
+
+```python
+
+```
+
+</details>
+
+[go back :house:][home]
+
 ### how to animate a node
 
 <details>
@@ -49,6 +76,11 @@ View Content
 
 **reference**
 - [Tween](https://docs.godotengine.org/en/3.0/classes/class_tween.html#class-tween-interpolate-property)
+
+There are many ways to change the property of a node, so these are a couple of examples of how to change it
+
+**syntax**
+`$Tween.interpolate_property(Object, property, initial value, final value, duration time, transition type, ease type, delay time)`
 
 ```python
 $Tween.interpolate_property($Sprite,"modulate", Color(1,1,1,1), Color(1,1,1,0),0.3, Tween.TRANS_QUAD, Tween.EASE_OUT )
