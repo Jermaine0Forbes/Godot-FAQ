@@ -1,11 +1,112 @@
 # Logs
 
-## 8/14/18
+## 4/11/19
 
-### How to flip Tile horizontally or vertically
+```python
+$Tween.interpolate_property($Sprite,"modulate", Color(1,1,1,1), Color(1,1,1,0),0.3, Tween.TRANS_QUAD, Tween.EASE_OUT )
+```
 
--  A : flips the tile horizontally
-- S : flips the tile vertically
+## 4/10/19
+
+- shape_owner_set_disabled()
+- Tween.interpolate_property()
+- $Person.set_process(false)
+
+
+## 4/6/19
+
+### Moving kinematic body
+
+```python
+extends KinematicBody2D
+
+
+export var speed = 400
+var vel = Vector2()
+var get_pos = Vector2()
+var extents = Vector2()
+var screensize = Vector2()
+
+
+func _ready():
+	# Called when the node is added to the scene for the first time.
+	# Initialization here
+	extents = $Sprite.get_texture().get_size()/2;
+	screensize = get_viewport_rect().size
+
+	pass
+
+func _process(delta):
+	shorthand()
+	var input = Vector2(0,0)
+	input.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
+	input.y = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
+	vel = input.normalized() * speed;
+	var pos = get_pos + vel * delta
+	pos.x = clamp(pos.x , 0, screensize.x )
+	pos.y = clamp(pos.y, 0, screensize.y )
+	set_pos(pos)
+	pass
+
+
+func shorthand():
+	get_pos = get_position()
+
+func set_pos(val):
+	set_position(val)
+```
+
+
+## 4/4/19
+
+
+### How to create an instance of a node
+
+```python
+onready var sprite = preload("res://sprite.tscn")
+
+func _ready():
+	var s = sprite.instance()
+	add_child(s)
+```
+
+### Use randomize for actual randomization
+
+Apparently if you don't call the function randomize(), every random function you
+call will output the same value. So you have to call randomize first in order to
+get a proper random number
+
+```python
+func _ready():
+	randomize()
+	var x = Vector2(rand_range(100,300),0)
+```
+
+### Get size of texture/sprite
+
+```python
+var sprite_size = get_texture().get_size()
+```
+
+
+### Get screenize
+
+```python
+var screensize = get_viewport_rect().size
+```
+
+### Get position of object
+
+```python
+print(get_pos())
+```
+
+### Print something to console
+
+```python
+print("someting to console")
+```
+
 
 ## 8/11/18
 
@@ -106,6 +207,7 @@ func on_timeout():
 #		menu.hide()
 #		menu_open = false
 #		get_tree().paused = false
+
 
 
 ```
