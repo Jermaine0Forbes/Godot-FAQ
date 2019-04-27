@@ -1,4 +1,11 @@
-# Logs 
+# Logs
+
+## 8/14/18
+
+### How to flip Tile horizontally or vertically
+
+-  A : flips the tile horizontally
+- S : flips the tile vertically
 
 ## 8/11/18
 
@@ -16,7 +23,7 @@ onready var prize = get_node("prize")
 onready var spawn1 = get_node("spawn_1")
 onready var spawn2 = get_node("spawn_2")
 onready var spawn3 = get_node("spawn_3")
-var spawns 
+var spawns
 signal item_collect
 var screensize
 var apple
@@ -37,7 +44,7 @@ func _ready():
 	spawn_items(8)
 
 	#menu.hide()
-	
+
 	# Initialization here
 	pass
 
@@ -63,31 +70,31 @@ func spawn_items(num):
 #		a.set_position(size)
 #		a.setPos(get_global_pos()+Vector2(randf()*6-3,randf()*6-3) )
 		a.connect("apple_contact", self, "_contact_sound")
-		
+
 
 func change_scene():
 	get_tree().change_scene("res://World2.tscn")
 
 func on_victory():
 	sound.get_node("myrrh").play()
-	
+
 
 func _contact_sound():
 #	print(apple.get_node("Sprite").get_texture().load_path)
 	emit_signal("item_collect", apple.get_node("Sprite").get_texture().load_path)
 	sound.get_node("item").play()
-	
+
 
 func update_time():
 	var x = int(timer.time_left)
 	if x > 0 :
 		var text =  "0:0"+str(x) if x < 10 else "0:"+str(x)
 		label.set_text(text)
-	
+
 
 func on_timeout():
 	print("timer has stopped")
-	
+
 
 #func is_open():
 #	if Input.is_action_just_pressed("ui_accept") and menu_open == false:
@@ -106,7 +113,7 @@ func on_timeout():
 
 ## 8/5/18
 
-### Update 
+### Update
 
 ```python
 extends Control
@@ -114,7 +121,7 @@ extends Control
 onready var item_slots = $items
 onready var cir_btn = $circle
 onready var ico_btn = $icon
-var circ_path 
+var circ_path
 var icon_path
 var items = {}
 
@@ -136,23 +143,23 @@ func get_next_empty_slot():
 			slot = i
 			print("slot: "+slot)
 			break
-	
+
 	return slot
 
 func set_items():
 #	item_slots = $items
 	for i in item_slots.get_children():
 		var name = i.get_name()
-		var texture = i.get_node("item").get_texture() 
+		var texture = i.get_node("item").get_texture()
 		var item = texture.load_path if texture !=null else ""
 		var count = i.get_node("count").get_text()
-		
+
 		items[name] = [item,count]
-		
-	
+
+
 
 func add_item(item):
-	var num 
+	var num
 	var slot
 	var text
 	var next_slot
@@ -174,14 +181,14 @@ func add_item(item):
 			break
 		else :
 			is_item_new = true
-	
+
 	if is_item_new :
 		next_slot = get_next_empty_slot()
 		print(next_slot)
-		var t = load(item) 
+		var t = load(item)
 		item_slots.get_node(next_slot).get_node("item").set_texture(t)
 		set_items()
-	
+
 	pass
 
 
@@ -202,7 +209,7 @@ func _on_icon_pressed():
 
 ## 8/4/18
 
-### What I've been working on 
+### What I've been working on
 
 ```python
 
@@ -211,7 +218,7 @@ extends Control
 onready var item_slots = $items
 onready var cir_btn = $circle
 onready var ico_btn = $icon
-var circ_path 
+var circ_path
 var icon_path
 var items = {}
 
@@ -233,22 +240,22 @@ func get_next_empty_slot():
 			slot = i
 			print("slot: "+slot)
 			break
-	
+
 	return slot
 
 func set_items():
 	for i in item_slots.get_children():
 		var name = i.get_name()
-		var texture = i.get_node("item").get_texture() 
+		var texture = i.get_node("item").get_texture()
 		var item = texture.load_path if texture !=null else ""
 		var count = i.get_node("count").get_text()
-		
+
 		items[name] = [item,count]
-		
-	
+
+
 
 func add_item(item):
-	var num 
+	var num
 	var slot
 	var text
 	var next_slot
@@ -266,10 +273,10 @@ func add_item(item):
 		else :
 			next_slot = get_next_empty_slot()
 			print(next_slot)
-			var t = load(item) 
+			var t = load(item)
 			item_slots.get_node(next_slot).get_node("item").set_texture(t)
 			set_items()
-	
+
 	pass
 
 
