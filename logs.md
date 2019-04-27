@@ -1,5 +1,9 @@
 # Logs
 
+## 4/27/19
+
+- RayCast.is_colliding()
+
 ## 4/11/19
 
 ```python
