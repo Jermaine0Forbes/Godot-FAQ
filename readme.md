@@ -10,6 +10,8 @@ How to make a sprite have pathfinding
 
 How to add an item in a grid container
 
+How to show the amount of similar items in a item menu
+
 How to create enemy AI
 
 [tween transition types][trans-type]
