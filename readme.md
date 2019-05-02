@@ -14,6 +14,8 @@ How to create enemy AI
 
 [tween transition types][trans-type]
 
+[tween ease types][ease-type]
+
 [how to use the tween animation][ani-node]
 
 [how to turn off the collision of a node/object][coll-off]
@@ -30,7 +32,7 @@ How to create enemy AI
 
 [how to get a size of a texture/sprite][size-texture]
 
-
+[ease-type]:#tween-ease-types
 [trans-type]:#tween-transition-type
 [ani-node]:#how-to-animate-a-node
 [coll-off]:#how-to-turn-off-the-collision-of-a-node
@@ -43,6 +45,29 @@ How to create enemy AI
 [home]:#godot-reference
 
 
+
+
+### tween ease types
+
+<details>
+<summary>
+View Content
+</summary>
+
+**reference**
+- [tween class](https://docs.godotengine.org/en/3.0/classes/class_tween.html#class-tween-interpolate-property)
+
+Ease Type | Value
+-|-
+EASE_IN | 0
+EASE_OUT | 1
+EASE_IN_OUT | 2
+EASE_OUT_IN | 3
+
+
+</details>
+
+[go back :house:][home]
 
 ### tween transition type
 
