@@ -1,5 +1,11 @@
 # Logs
 
+
+## 5/1/19
+- ParallaxBackground
+- ParallaxLayer
+
+
 ## 4/27/19
 
 - RayCast.is_colliding()

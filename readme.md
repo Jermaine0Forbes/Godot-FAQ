@@ -14,6 +14,8 @@ How to show the amount of similar items in a item menu
 
 How to create enemy AI
 
+[how to use parallax scrolling][p-scroll]
+
 [tween transition types][trans-type]
 
 [tween ease types][ease-type]
@@ -34,6 +36,7 @@ How to create enemy AI
 
 [how to get a size of a texture/sprite][size-texture]
 
+[p-scroll]:#how-to-use-parallax-scrolling
 [ease-type]:#tween-ease-types
 [trans-type]:#tween-transition-type
 [ani-node]:#how-to-animate-a-node
@@ -47,7 +50,36 @@ How to create enemy AI
 [home]:#godot-reference
 
 
+### how to use parallax scrolling
 
+<details>
+<summary>
+View Content
+</summary>
+
+**reference**
+- [ParallaxLayer](https://docs.godotengine.org/en/3.1/classes/class_parallaxlayer.html#class-parallaxlayer-property-motion-offset)
+
+
+1. Add a node called ParallaxBackground
+
+2. Select ParallaxBackground and add a child node called ParallaxLayer
+
+3. Select ParallaxLayer and a add child node that can either be a TileMap or a Sprite.
+
+4. In the options of the ParallaxLayer there is an called Scale. It has x and y
+coordinates, and this is the place where you will create the parallax effect. If
+you want the parallax scrolling to only happen horizontally then change the x coordinate.
+The default value is 1, but if you make it less than (for example: 0.5), the parallax effect
+will be more apparent.
+
+5. There are other options like mirroring which will duplicate the image in the ParallaxLayer,
+and the offset option that position the image. But I haven't really used them that much
+
+
+</details>
+
+[go back :house:][home]
 
 ### tween ease types
 
