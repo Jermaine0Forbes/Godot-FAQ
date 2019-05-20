@@ -1,6 +1,34 @@
 # Logs
 
 
+## 5/20/19
+
+**Note** finish making the mirror so that we can test the KinematicBody2D.set_process
+function
+
+### how to create an instance of an object
+
+```
+var brick = bricks.instance()
+# If I preloaded an object, this will create the object so that I can put it inside
+# the scene
+```
+
+### how to check a type of node
+
+```python
+if node is Position2D :
+	print("k")
+
+```
+
+### how to loop through children
+
+```python
+for node in collection.get_children():
+	print("k")
+```
+
 ## 5/1/19
 - ParallaxBackground
 - ParallaxLayer
