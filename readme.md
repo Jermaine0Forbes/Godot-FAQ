@@ -14,6 +14,8 @@ How to show the amount of similar items in a item menu
 
 How to create enemy AI
 
+[how to get children nodes from a parent][get_children]
+
 [how to use parallax scrolling][p-scroll]
 
 [tween transition types][trans-type]
@@ -36,6 +38,15 @@ How to create enemy AI
 
 [how to get a size of a texture/sprite][size-texture]
 
+[how to check a type of node][check-node]
+
+[how to create an instance of an object][inst-object]
+
+[how to create a timer in gdscript][timer-script]
+
+[inst-object]:#how-to-create-an-instance-of-an-object
+[check-node]:#how-to-check-a-type-of-node
+[get-children]:#how-to-get-children-from-a-parent
 [p-scroll]:#how-to-use-parallax-scrolling
 [ease-type]:#tween-ease-types
 [trans-type]:#tween-transition-type
@@ -49,6 +60,102 @@ How to create enemy AI
 [print]:#how-to-print-something-to-console
 [home]:#godot-reference
 
+---
+
+### how to create a timer in gdscript
+
+<details>
+<summary>
+View Content
+</summary>
+
+
+```python
+onready var collection = $collection
+var timer  = Timer.new() # creates a new instance of a timer
+
+func _ready():
+	timer.set_one_shot(true) # make sure the time doesn't repeat
+	timer.set_wait_time(5) # set's the countdown time in seconds
+	timer.connect("timeout", self, "on_timeout") # when the timer ends it call the function on_timeout
+	collection.add_child(timer)#this adds the timer in a node called collection
+	timer.start() #this starts the timer when you
+	pass
+
+func _process(delta):
+
+	if paused:
+		print(timer.time_left) #if paused is true, it will print out the remaining time
+
+	pass
+
+
+
+func on_timeout():
+	print("foo") # after the time end it will print into the console foo
+```
+
+</details>
+
+[go back :house:][home]
+
+### how to create an instance of an object
+
+<details>
+<summary>
+View Content
+</summary>
+
+
+```python
+var brick = bricks.instance()
+# If I preloaded an object, this will create the object so that I can put it inside
+# the scene
+```
+
+</details>
+
+[go back :house:][home]
+
+
+### how to check a type of node
+
+<details>
+<summary>
+View Content
+</summary>
+
+```python
+## this checks if the node is a Position2D type
+if node is Position2D :
+	print("k")
+
+```
+
+</details>
+
+[go back :house:][home]
+
+
+
+### how to get children from a parent
+
+<details>
+<summary>
+View Content
+</summary>
+
+**reference**
+- []()
+
+```python
+for node in collection.get_children():
+	print(node.name)
+```
+
+</details>
+
+[go back :house:][home]
 
 ### how to use parallax scrolling
 
