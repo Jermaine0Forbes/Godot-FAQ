@@ -14,6 +14,8 @@ How to show the amount of similar items in a item menu
 
 How to create enemy AI
 
+[how to fix blurry sprites][fix-blur]
+
 [how to get children nodes from a parent][get_children]
 
 [how to use parallax scrolling][p-scroll]
@@ -59,8 +61,33 @@ How to create enemy AI
 [get-screen]:#how-to-get-screen-size
 [print]:#how-to-print-something-to-console
 [home]:#godot-reference
+[fix-blur]:#how-to-fix-blurry-sprites
 
 ---
+
+### how to fix blurry sprites
+
+<details>
+<summary>
+View Content
+</summary>
+
+**reference**
+- [Godot 3, blurry pixel art](https://www.reddit.com/r/godot/comments/7efl2v/godot_3_blurry_pixel_art/)
+
+1. Click on the image in FileSystem folder
+
+2. In the **import** tab on right of the screen disable
+- Filter
+- Mipmaps
+- Anisotropic
+
+3. Now click on the button that says **Reimport**
+
+</details>
+
+[go back :house:][home]
+
 
 ### how to create a timer in gdscript
 
